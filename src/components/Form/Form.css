@@ -7,7 +7,7 @@
 .expenseform__field {
   width: 22rem;
   padding: 8px;
-  border: 2px solid #51e1ed;
+  border: 2px solid blue;
   border-radius: 6px;
   font-size: 16px;
 }
@@ -16,7 +16,8 @@
   padding: 8px 20px;
   border: none;
   border-radius: 6px;
-  background: #51e1ed;
+  background: blue;
   cursor: pointer;
   font-size: 18px;
+  color: white;
 }

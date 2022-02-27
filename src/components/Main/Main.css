@@ -1,0 +1,19 @@
+.main {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  gap: 5rem;
+  margin: 70px 0;
+}
+
+.main__item {
+  padding: 20px;
+  box-shadow: blue 0px 0px 0px 2px inset, rgb(255, 255, 255) 10px -10px 0px -3px,
+    rgb(31, 193, 27) 10px -10px, rgb(255, 255, 255) 20px -20px 0px -3px,
+    rgb(255, 217, 19) 20px -20px;
+}
+
+.main__item__top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
