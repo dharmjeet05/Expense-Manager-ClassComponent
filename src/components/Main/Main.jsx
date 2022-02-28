@@ -22,31 +22,42 @@ export class Main extends Component {
     return (
       <div className="container">
         <div className="main">
-          {this.props.showAllItems
-            ? this.props.items.map((item) => (
-                <div className="main__item" key={item.id}>
-                  <AiFillCloseCircle
-                    className="main__close_btn"
-                    onClick={() => this.props.handleDelete(item.id, item.price)}
-                  />
-                  <div className="main__item__top">
-                    <h2>{item.title}</h2>
-                    <h5>₹ {item.price}</h5>
-                  </div>
+          {this.props.items.length == 0 ? (
+            <div
+              className="container"
+              style={{ display: "flex", justifyContent: "center" }}
+            >
+              <h2>Please Add Expenses</h2>
+            </div>
+          ) : this.props.showAllItems ? (
+            this.props.items.map((item) => (
+              <div className="main__item" key={item.id}>
+                <AiFillCloseCircle
+                  className="main__close_btn"
+                  onClick={() => this.props.handleDelete(item.id, item.price)}
+                />
+                <p>{item.category}</p>
+                <div className="main__item__top">
+                  <h2>{item.title}</h2>
+                  <h5>₹ {item.price}</h5>
                 </div>
-              ))
-            : this.props.filteredItems.map((item) => (
-                <div className="main__item" key={item.id}>
-                  <AiFillCloseCircle
-                    className="main__close_btn"
-                    onClick={() => this.props.handleDelete(item.id, item.price)}
-                  />
-                  <div className="main__item__top">
-                    <h2>{item.title}</h2>
-                    <h5>₹ {item.price}</h5>
-                  </div>
+              </div>
+            ))
+          ) : (
+            this.props.filteredItems.map((item) => (
+              <div className="main__item" key={item.id}>
+                <AiFillCloseCircle
+                  className="main__close_btn"
+                  onClick={() => this.props.handleDelete(item.id, item.price)}
+                />
+                <p>{item.category}</p>
+                <div className="main__item__top">
+                  <h2>{item.title}</h2>
+                  <h5>₹ {item.price}</h5>
                 </div>
-              ))}
+              </div>
+            ))
+          )}
         </div>
       </div>
     );

@@ -19,18 +19,6 @@ export class App extends Component {
     };
   }
 
-  // componentDidMount() {
-  //   this.total();
-  // }
-
-  // componentDidUpdate() {
-  //   this.total();
-  // }
-
-  // componentWillUnmount() {
-  //   console.log("componentWill Unmount");
-  // }
-
   displayForm = () => {
     this.setState({ formDisplay: !this.state.formDisplay });
   };

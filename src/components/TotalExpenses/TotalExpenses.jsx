@@ -16,7 +16,10 @@ export class TotalExpenses extends Component {
   render() {
     return (
       <div className="container">
-        <h3>Total Expenses : ₹ {this.props.total}</h3>
+        <div className="totalbox">
+          <h3>Total Expenses : </h3>
+          <h2> ₹ {this.props.total}</h2>
+        </div>
       </div>
     );
   }

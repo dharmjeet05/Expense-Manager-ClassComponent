@@ -9,15 +9,16 @@
 
 .nav_list {
   display: flex;
-  gap: 3rem;
+  gap: 2.5rem;
   cursor: pointer;
 }
 
 .nav__right {
   display: flex;
-  gap: 3rem;
+  gap: 2.5rem;
 }
 
 .navbar .btn {
   cursor: pointer;
+  font-weight: 600;
 }

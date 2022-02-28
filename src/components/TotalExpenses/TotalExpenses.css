@@ -1,0 +1,18 @@
+.totalbox {
+  width: 300px;
+  border: 1px solid black;
+  border-radius: 12px;
+  padding: 20px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.totalbox h2 {
+  margin-top: 5px;
+  background: green;
+  padding: 3px 12px;
+  border-radius: 8px;
+  color: whitesmoke;
+}
