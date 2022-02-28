@@ -41,6 +41,11 @@ export class App extends Component {
     this.setState({ formDisplay: false });
   };
 
+  handleDelete = (id) => {
+    const afterRemoveItems = this.state.items.filter((item) => item.id !== id);
+    this.setState({ items: afterRemoveItems });
+  };
+
   render() {
     return (
       <>
@@ -54,7 +59,7 @@ export class App extends Component {
             handleSubmit={this.handleSubmit}
           />
         )}
-        <Main items={this.state.items} />
+        <Main items={this.state.items} handleDelete={this.handleDelete} />
         <>{JSON.stringify(this.state)}</>
       </>
     );
