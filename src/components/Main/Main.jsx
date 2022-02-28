@@ -51,9 +51,11 @@ export class Main extends Component {
                   onClick={() => this.props.handleDelete(item.id, item.price)}
                 />
                 <p>{item.category}</p>
-                <div className="main__item__top">
-                  <h2>{item.title}</h2>
-                  <h5>₹ {item.price}</h5>
+                <div className="main__inner">
+                  <div className="main__item__top">
+                    <h2>{item.title}</h2>
+                    <h5>₹ {item.price}</h5>
+                  </div>
                 </div>
               </div>
             ))

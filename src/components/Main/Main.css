@@ -13,10 +13,28 @@
   position: relative;
 }
 
+.main__inner {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+
 .main__item__top {
   display: flex;
   justify-content: space-between;
   align-items: center;
+
+  height: 100%;
+}
+
+.main__item h2 {
+  font-size: 16px;
+  width: 180px;
+}
+
+.main__item h5 {
+  width: 50px;
 }
 
 .main__close_btn {
@@ -31,7 +49,7 @@
 }
 
 .main__item p {
-  font-size: 10px;
+  font-size: 12px;
   background: rgb(255, 217, 19) 20px -20px;
   display: inline-block;
   padding: 4px 6px;

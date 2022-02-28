@@ -1,5 +1,5 @@
 .totalbox {
-  width: 300px;
+  width: 250px;
   border: 1px solid black;
   border-radius: 12px;
   padding: 20px;
@@ -7,6 +7,8 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+
+  margin-left: auto;
 }
 
 .totalbox h2 {
