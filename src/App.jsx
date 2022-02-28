@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import Form from "./components/Form/Form";
 import Main from "./components/Main/Main";
 import Navbar from "./components/Navbar/Navbar";
+import TotalExpenses from "./components/TotalExpenses/TotalExpenses";
 
 export class App extends Component {
   constructor() {
@@ -12,12 +13,16 @@ export class App extends Component {
       filteredItems: [],
       formDisplay: false,
       showAllItems: true,
+      total: 0,
     };
-    console.log("Constructor");
   }
 
+  // componentDidMount() {
+  //   this.total();
+  // }
+
   // componentDidUpdate() {
-  //   console.log("componentDidUpdate");
+  //   this.total();
   // }
 
   // componentWillUnmount() {
@@ -41,11 +46,13 @@ export class App extends Component {
     // newItems.push(singleItem);
     // this.setState({ items: newItems });
     this.setState({ formDisplay: false });
+    this.setState({ total: this.state.total + parseInt(price) });
   };
 
-  handleDelete = (id) => {
+  handleDelete = (id, price) => {
     const afterRemoveItems = this.state.items.filter((item) => item.id !== id);
     this.setState({ items: afterRemoveItems });
+    this.setState({ total: this.state.total - parseInt(price) });
   };
 
   showAll = () => {
@@ -59,6 +66,13 @@ export class App extends Component {
     this.setState({ filteredItems: filtered });
     this.setState({ showAllItems: false });
   };
+
+  // setTotal = () => {
+  //   const totalPrice = this.state.items.reduce((acc, cur) => {
+  //     return acc + parseInt(cur.price);
+  //   }, 0);
+  //   this.setState({ total: totalPrice });
+  // };
 
   render() {
     return (
@@ -81,6 +95,7 @@ export class App extends Component {
           handleDelete={this.handleDelete}
           showAllItems={this.state.showAllItems}
         />
+        <TotalExpenses total={this.state.total} />
       </>
     );
   }

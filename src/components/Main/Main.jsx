@@ -27,7 +27,7 @@ export class Main extends Component {
                 <div className="main__item" key={item.id}>
                   <AiFillCloseCircle
                     className="main__close_btn"
-                    onClick={() => this.props.handleDelete(item.id)}
+                    onClick={() => this.props.handleDelete(item.id, item.price)}
                   />
                   <div className="main__item__top">
                     <h2>{item.title}</h2>
@@ -39,7 +39,7 @@ export class Main extends Component {
                 <div className="main__item" key={item.id}>
                   <AiFillCloseCircle
                     className="main__close_btn"
-                    onClick={() => this.props.handleDelete(item.id)}
+                    onClick={() => this.props.handleDelete(item.id, item.price)}
                   />
                   <div className="main__item__top">
                     <h2>{item.title}</h2>
