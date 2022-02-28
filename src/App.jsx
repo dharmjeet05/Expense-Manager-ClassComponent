@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import CategoryForm from "./components/CategoryForm/CategoryForm";
 import Form from "./components/Form/Form";
 import Main from "./components/Main/Main";
 import Navbar from "./components/Navbar/Navbar";
@@ -9,6 +10,7 @@ export class App extends Component {
     super();
     this.state = {
       categories: ["Home", "Food", "Travel"],
+      categoryFormDisplay: false,
       items: [],
       filteredItems: [],
       formDisplay: false,
@@ -33,6 +35,10 @@ export class App extends Component {
     this.setState({ formDisplay: !this.state.formDisplay });
   };
 
+  displayCategoryForm = () => {
+    this.setState({ categoryFormDisplay: !this.state.categoryFormDisplay });
+  };
+
   handleSubmit = (e, title, category, price) => {
     e.preventDefault();
     const singleItem = {
@@ -47,6 +53,12 @@ export class App extends Component {
     // this.setState({ items: newItems });
     this.setState({ formDisplay: false });
     this.setState({ total: this.state.total + parseInt(price) });
+  };
+
+  handleCategorySubmit = (e, title) => {
+    e.preventDefault();
+    this.setState({ categories: [...this.state.categories, title] });
+    this.setState({ categoryFormDisplay: false });
   };
 
   handleDelete = (id, price) => {
@@ -67,19 +79,13 @@ export class App extends Component {
     this.setState({ showAllItems: false });
   };
 
-  // setTotal = () => {
-  //   const totalPrice = this.state.items.reduce((acc, cur) => {
-  //     return acc + parseInt(cur.price);
-  //   }, 0);
-  //   this.setState({ total: totalPrice });
-  // };
-
   render() {
     return (
       <>
         <Navbar
           categories={this.state.categories}
           displayForm={this.displayForm}
+          displayCategoryForm={this.displayCategoryForm}
           showFilteredItems={this.showFilteredItems}
           showAll={this.showAll}
         />
@@ -88,6 +94,9 @@ export class App extends Component {
             categories={this.state.categories}
             handleSubmit={this.handleSubmit}
           />
+        )}
+        {this.state.categoryFormDisplay && (
+          <CategoryForm handleCategorySubmit={this.handleCategorySubmit} />
         )}
         <Main
           items={this.state.items}

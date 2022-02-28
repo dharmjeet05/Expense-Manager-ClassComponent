@@ -8,6 +8,7 @@ export class Navbar extends Component {
   static propTypes = {
     categories: PropTypes.array,
     displayForm: PropTypes.func,
+    displayCategoryForm: PropTypes.func,
     showFilteredItems: PropTypes.func,
     showAll: PropTypes.func,
   };
@@ -27,8 +28,13 @@ export class Navbar extends Component {
             </li>
           ))}
         </div>
-        <div className="btn" onClick={this.props.displayForm}>
-          Add Expense
+        <div className="nav__right">
+          <div className="btn" onClick={this.props.displayCategoryForm}>
+            Add Category
+          </div>
+          <div className="btn" onClick={this.props.displayForm}>
+            Add Expense
+          </div>
         </div>
       </nav>
     );

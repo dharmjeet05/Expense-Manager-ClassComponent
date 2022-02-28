@@ -13,6 +13,11 @@
   cursor: pointer;
 }
 
+.nav__right {
+  display: flex;
+  gap: 3rem;
+}
+
 .navbar .btn {
   cursor: pointer;
 }
