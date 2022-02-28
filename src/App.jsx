@@ -14,10 +14,6 @@ export class App extends Component {
     console.log("Constructor");
   }
 
-  // componentDidMount() {
-  //   console.log("componentDidMount()");
-  // }
-
   // componentDidUpdate() {
   //   console.log("componentDidUpdate");
   // }
@@ -30,6 +26,21 @@ export class App extends Component {
     this.setState({ formDisplay: !this.state.formDisplay });
   };
 
+  handleSubmit = (e, title, category, price) => {
+    e.preventDefault();
+    const singleItem = {
+      id: new Date().getTime().toString(),
+      title: title,
+      category: category,
+      price: price,
+    };
+    this.setState({ items: [...this.state.items, singleItem] });
+    // const newItems = this.state.items.slice();
+    // newItems.push(singleItem);
+    // this.setState({ items: newItems });
+    this.setState({ formDisplay: false });
+  };
+
   render() {
     return (
       <>
@@ -37,8 +48,14 @@ export class App extends Component {
           categories={this.state.categories}
           displayForm={this.displayForm}
         />
-        {this.state.formDisplay && <Form categories={this.state.categories} />}
-        <Main />
+        {this.state.formDisplay && (
+          <Form
+            categories={this.state.categories}
+            handleSubmit={this.handleSubmit}
+          />
+        )}
+        <Main items={this.state.items} />
+        <>{JSON.stringify(this.state)}</>
       </>
     );
   }

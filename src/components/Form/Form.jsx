@@ -7,26 +7,54 @@ import "./Form.css";
 export class Form extends Component {
   static propTypes = {
     categories: PropTypes.array,
+    handleSubmit: PropTypes.func,
   };
 
   constructor(props) {
     super(props);
     this.state = {
-      categories: props.categories,
+      id: 0,
+      title: "",
+      category: "Home",
+      price: 0,
     };
   }
+
+  categoryChange = (e) => {
+    this.setState({ category: e.target.value });
+  };
+
+  titleChange = (e) => {
+    this.setState({ title: e.target.value });
+  };
+
+  priceChange = (e) => {
+    this.setState({ price: e.target.value });
+  };
 
   render() {
     return (
       <>
         <div className="container">
-          <form className="expenseform">
+          <form
+            className="expenseform"
+            onSubmit={(e) =>
+              this.props.handleSubmit(
+                e,
+                this.state.title,
+                this.state.category,
+                this.state.price
+              )
+            }
+          >
             <select
               className="expenseform__field"
               name="categories"
               id="categories"
+              onChange={this.categoryChange}
+              value={this.state.category}
             >
-              {this.state.categories.map((item, index) => (
+              {this.props.categories.map((item, index) => (
                 <option key={index} value={item} required>
                   {item}
                 </option>
@@ -39,6 +67,7 @@ export class Form extends Component {
               id="title"
               placeholder="Title"
               required
+              onChange={this.titleChange}
             />
             <input
               className="expenseform__field"
@@ -47,8 +76,11 @@ export class Form extends Component {
               id="amount"
               placeholder="Amount"
               required
+              onChange={this.priceChange}
             />
-            <button className="btn">Add</button>
+            <button type="submit" className="btn">
+              Add
+            </button>
           </form>
         </div>
       </>
