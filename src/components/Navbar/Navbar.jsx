@@ -8,6 +8,8 @@ export class Navbar extends Component {
   static propTypes = {
     categories: PropTypes.array,
     displayForm: PropTypes.func,
+    showFilteredItems: PropTypes.func,
+    showAll: PropTypes.func,
   };
 
   constructor(props) {
@@ -18,8 +20,11 @@ export class Navbar extends Component {
     return (
       <nav className="container navbar">
         <div className="nav_list">
+          <li onClick={this.props.showAll}>All</li>
           {this.props.categories.map((item, index) => (
-            <li key={index}>{item}</li>
+            <li key={index} onClick={() => this.props.showFilteredItems(item)}>
+              {item}
+            </li>
           ))}
         </div>
         <div className="btn" onClick={this.props.displayForm}>

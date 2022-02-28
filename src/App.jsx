@@ -9,7 +9,9 @@ export class App extends Component {
     this.state = {
       categories: ["Home", "Food", "Travel"],
       items: [],
+      filteredItems: [],
       formDisplay: false,
+      showAllItems: true,
     };
     console.log("Constructor");
   }
@@ -46,12 +48,26 @@ export class App extends Component {
     this.setState({ items: afterRemoveItems });
   };
 
+  showAll = () => {
+    this.setState({ showAllItems: true });
+  };
+
+  showFilteredItems = (category) => {
+    const filtered = this.state.items.filter(
+      (item) => item.category === category
+    );
+    this.setState({ filteredItems: filtered });
+    this.setState({ showAllItems: false });
+  };
+
   render() {
     return (
       <>
         <Navbar
           categories={this.state.categories}
           displayForm={this.displayForm}
+          showFilteredItems={this.showFilteredItems}
+          showAll={this.showAll}
         />
         {this.state.formDisplay && (
           <Form
@@ -59,8 +75,12 @@ export class App extends Component {
             handleSubmit={this.handleSubmit}
           />
         )}
-        <Main items={this.state.items} handleDelete={this.handleDelete} />
-        <>{JSON.stringify(this.state)}</>
+        <Main
+          items={this.state.items}
+          filteredItems={this.state.filteredItems}
+          handleDelete={this.handleDelete}
+          showAllItems={this.state.showAllItems}
+        />
       </>
     );
   }
